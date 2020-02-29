@@ -24,14 +24,27 @@ const App = () =>{
     );
   };
 
-  const Ccalculation = (text) =>{
+  const Ccalculation = () =>{
     return celcius;
   };
+
+  const resetC =() =>{
+    setCelcius("");
+  }
+
+  const resetF =() =>{
+    setFarhenheit("");
+  }
+
+  const resetAll =() =>{
+    setFarhenheit("");
+    setCelcius("");
+  }
   
   return(
     <div className="form">
       <h2>Centigrade to Farhenheit</h2>
-      <Centigrade Fcalculation={Fcalculation} Farhenheit={Farhenheit} Ccalculation={Ccalculation} Celcius={Celcius}/>
+      <Centigrade Fcalculation={Fcalculation} Farhenheit={Farhenheit} Ccalculation={Ccalculation} Celcius={Celcius} resetF={resetF} resetC={resetC} resetAll={resetAll}/>
     </div>
   );
 }

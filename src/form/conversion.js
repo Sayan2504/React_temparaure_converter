@@ -1,26 +1,47 @@
 import React, {useState} from 'react'
 
-const Conversion = ({Fcalculation, Farhenheit, Ccalculation, Celcius}) =>{
-    const[text, setText] = useState("");
+const Conversion = ({Fcalculation, Farhenheit, Ccalculation, Celcius, resetF, resetC, resetAll}) =>{
+    const[textC, setTextC] = useState("");
+    const[textF, setTextF] = useState("");
 
-    const changeText = (e) =>{
-        setText(e.target.value);
+    const changeTextC = (e) =>{
+        setTextC(e.target.value);
+    };
+
+    const changeTextF = (e) =>{
+        setTextF(e.target.value);
     };
 
     return(
         <div>
-            <input type="text" value={changeText} value={Ccalculation(text)}  placeholder="Enter centigrade temp" onChange={changeText}/>
+            <input type="text" value={textC} value={Ccalculation(textC)}  placeholder="Enter Centigrade temp" onChange={changeTextC}/>
             <button onClick={(e)=>{
                     e.preventDefault();
-                    Farhenheit(text);
+                    Farhenheit(textC);
                 }}>Change to Farhenheit</button>
-            <br/>
-            <input type="text" value={changeText} value={Fcalculation(text)} placeholder="Enter Farhenheit temp" onChange={changeText}/>
             <button onClick={(e)=>{
                     e.preventDefault();
-                    Celcius(text);
-                }}>Change to Celcius</button>
+                    resetC();
+                    }}>Reset</button>
+
+
             <br/>
+            <input type="text" value={textF} value={Fcalculation(textF)} placeholder="Enter Farhenheit temp" onChange={changeTextF}/>
+            <button onClick={(e)=>{
+                    e.preventDefault();
+                    Celcius(textF);
+                }}>Change to Celcius</button>
+            <button onClick={(e)=>{
+                    e.preventDefault();
+                    resetF();
+                    }}>Reset</button>
+
+
+            <br/>
+            <button onClick={(e)=>{
+                    e.preventDefault();
+                    resetAll();
+                    }}>Reset all</button>
         </div>
     )
    
