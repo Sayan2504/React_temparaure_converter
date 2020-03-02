@@ -1,18 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 const Conversion = ({resetC, resetF, resetAll}) =>{
     const[textC, setTextC] = useState("");
     const[textF, setTextF] = useState("");
 
-    const cToF = (e) =>{
-        setTextC(e.target.value)
-        setTextF((textF * 9/5) + 32)   
-    }
+    const cToF = (e1) =>{
+        setTextC(e1.target.value)
+    };
 
-    const fToC = (e) =>{
-        setTextF(e.target.value)
-        setTextC((textC - 32) * (5/9))
-    }
+    useEffect(() =>{
+        if(textC){
+            setTextF((textC * (9/5)) + 32);
+        }
+        if(textF){
+            setTextC((textF - 32) * (5/9));
+        }
+    }, [textC, textF] );
+
+
+    const fToC = (e2) =>{
+        setTextF(e2.target.value)  
+    };
+
+   
 
     return(
         <div>
