@@ -1,31 +1,44 @@
 import React, { useState } from 'react';
 import './App.css';
-import Conversion from './form/conversion'
+import CentigradeToFarenheit from './form/centiToFarh'
+import FarenheitToCentigrade from './form/farhToCenti'
 
 const App = () =>{
-  const[celcius, setCelcius] = useState("");
-  const[farhenheit, setFarhenheit] = useState("");
+  const[textC, setTextC] = useState("");
+  const[textF, setTextF] = useState("");
+
+
+  const Cval =(e1) =>{
+    setTextC(e1.target.value)
+  }
   
+  const Fval =(e2) =>{
+    setTextF(e2.target.value)
+  }
 
-  const resetC =() =>{
-    setCelcius("");
-  };
+  const cToF = (text) =>{
+    setTextF((text * (9/5)) + 32);
+  }
 
+  const fToC = (text) =>{
+    setTextC((text - 32) * (5/9));
+  }
 
-  const resetF =() =>{
-    setFarhenheit("");
-  };
+  const resetC = () =>{
+    setTextC("");
+  }
 
-
-  const resetAll =() =>{
-    setFarhenheit("");
-    setCelcius("");
-  };
+  const resetF = () =>{
+    setTextF("");
+  }
+  
   
   return(
     <div className="form">
-      <h2>Centigrade to Farhenheit</h2>
-      <Conversion resetC={resetC} resetF={resetF} resetAll={resetAll} />
+      <h2>Temparature Conversion</h2>
+      <CentigradeToFarenheit resetC={resetC} Cval={Cval} textC={textC} cToF={cToF}/>
+      <br/><br/>
+      <FarenheitToCentigrade resetF={resetF} Fval={Fval} textF={textF} fToC={fToC}/>
     </div>
   );
 }
