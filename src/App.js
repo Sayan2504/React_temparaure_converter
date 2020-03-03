@@ -17,11 +17,11 @@ const App = () =>{
   }
 
   const cToF = (text) =>{
-    setTextF((text * (9/5)) + 32);
+    setTextF(Math.round((text * (9/5)) + 32));
   }
 
   const fToC = (text) =>{
-    setTextC((text - 32) * (5/9));
+    setTextC(Math.round((text - 32) * (5/9)));
   }
 
   const resetC = () =>{
@@ -36,9 +36,9 @@ const App = () =>{
   return(
     <div className="form">
       <h2>Temparature Conversion</h2>
-      <CentigradeToFarenheit resetC={resetC} Cval={Cval} textC={textC} cToF={cToF}/>
+      <CentigradeToFarenheit resetC={resetC} Cval={Cval} textC={textC} cToF={cToF} resetF={resetF}/>
       <br/><br/>
-      <FarenheitToCentigrade resetF={resetF} Fval={Fval} textF={textF} fToC={fToC}/>
+      <FarenheitToCentigrade resetF={resetF} Fval={Fval} textF={textF} fToC={fToC} resetC={resetC}/>
     </div>
   );
 }

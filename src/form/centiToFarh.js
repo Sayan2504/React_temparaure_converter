@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-const CentigradeToFarenheit = ({resetC, Cval, textC, cToF}) =>{
+const CentigradeToFarenheit = ({resetC, Cval, textC, cToF, resetF}) =>{
     
     
     const changeText = (e1) =>{
@@ -10,6 +10,9 @@ const CentigradeToFarenheit = ({resetC, Cval, textC, cToF}) =>{
     useEffect(() =>{
         if(textC){
             cToF(textC);
+        }
+        else if(!textC){
+            resetF();
         }
     }, [textC] );
 
