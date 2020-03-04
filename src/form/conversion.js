@@ -11,14 +11,11 @@ const Conversion = ({resetC, Cval, textC, cToF, cToK, resetF, Fval, textF, fToC,
         Fval(e2);  
     };
 
-    const changeTextK = (e3) =>{
-        Kval(e3);
-    };
+    
 
     useEffect(() =>{
         if(textC){
             cToF(textC);
-            cToK(textC);
         }
         
     }, [textC] );
@@ -26,18 +23,11 @@ const Conversion = ({resetC, Cval, textC, cToF, cToK, resetF, Fval, textF, fToC,
     useEffect(() =>{
         if(textF){
             fToC(textF);
-            fToK(textF);
         }
         
     }, [textF] );
 
-    useEffect(() =>{
-        if(textK){
-            kToC(textK);
-            kToF(textK);
-        }
-        
-    }, [textK] );
+    
 
 
     
@@ -60,15 +50,7 @@ const Conversion = ({resetC, Cval, textC, cToF, cToK, resetF, Fval, textF, fToC,
                     resetF();
                     }}>Reset</button>
 
-            <br/><br/>
             
-            <span>Kelvin : </span>
-            <input type="text" value={textK} placeholder="Kelvin temparature" onChange={changeTextK}/>
-            <button onClick={(e)=>{
-                    e.preventDefault();
-                    resetK();
-                    }}>Reset</button>
-
             
             <br/><br/>
             <button onClick={(e)=>{
